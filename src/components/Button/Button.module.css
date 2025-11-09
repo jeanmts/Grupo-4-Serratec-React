@@ -1,0 +1,10 @@
+.btn {
+    color: #fff;
+    background-color: #4F46E5;
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    width: 100%;
+}

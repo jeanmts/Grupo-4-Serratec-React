@@ -1,0 +1,46 @@
+.mainSignup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 1240px;
+}
+
+.containerMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  text-align: start;
+  box-shadow: 1px 20px 1000px 0.1px;
+  border-radius: 10px;
+  min-width: 500px;
+  height: 50vh;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.title {
+  font-family: "Poppins", Helvetica, sans-serif;
+  font-size: 38px;
+}
+
+.spanErro {
+    font-family: "Inter" Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: red;
+}
+.labelSignup,
+.inputSignup {
+  width: 400px;
+  font-family: "Inter", Helvetica, sans-serif;
+  font-size: 16px;
+  margin-top: 200px;
+  background-color: aqua;
+}
