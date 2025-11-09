@@ -12,8 +12,8 @@ const DetalhesProduto = () => {
   const [carregando, setCarregando] = useState(true);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8080/produtos/${id}`)
+    api
+      .get(`/produtos/${id}`)
       .then((response) => {
         setProduto(response.data);
         setCarregando(false);
