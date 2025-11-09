@@ -26,7 +26,7 @@ const Header = () => {
             Login
           </Link>
           <Link 
-            to="/cadastro" 
+            to="/signup" 
             className="px-4 py-2 text-white font-semibold rounded-lg transition-colors shadow-md"
             style={{ backgroundColor: mainColor, hover: '#3f3a9a' }} // Botão de Cadastro 
           >
