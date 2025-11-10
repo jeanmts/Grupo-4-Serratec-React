@@ -48,11 +48,11 @@ const Login = () => {
       <header>
         <Header />
       </header>
-      <main id="main" className={styles.mainLogin}>
+      <main id="main" className={styles.mainLogin} tabIndex={0}>
         <div className={styles.containerMain}>
           <h1 className={styles.titleLogin}>Login</h1>
-          <form onSubmit={handleSubmit(handleLogin)}>
-            <div className="mb-3">
+          <form onSubmit={handleSubmit(handleLogin)} aria-label="Formulário para login do usuario">
+            <div className="mb-3" tabIndex={0}>
               <label
                 htmlFor="exampleInputEmail1"
                 className="form-label"
@@ -61,6 +61,7 @@ const Login = () => {
                 Usuario
               </label>
               <input
+                tabIndex={0}
                 {...register("username", {
                   required: "O usuario é obrigatorio!",
                 })}
@@ -73,7 +74,7 @@ const Login = () => {
                 required
               />
             </div>
-            <div className="mb-3">
+            <div className="mb-3" tabIndex={0}>
               <label
                 htmlFor="exampleInputPassword1"
                 className="form-label"
@@ -82,6 +83,7 @@ const Login = () => {
                 Senha
               </label>
               <input
+                tabIndex={0}
                 {...register("password", { required: "A senha é obrigatoria" })}
                 aria-invalid={errors.password ? "true" : "false"}
                 placeholder="Digite a sua senha"
@@ -91,13 +93,16 @@ const Login = () => {
                 required
               />
             </div>
-            <Button texto="Login" />
+            <Button tabIndex={0} texto="Login" />
           </form>
           {errorSignIn ? (
             <span className={styles.spanErro}>{errorSignIn}</span>
           ) : null}
-          <p>
-            Não tem uma conta<Link to="/signup">Cadastre-se</Link>
+          <p tabIndex={0}>
+            Não tem uma conta
+            <Link to="/signup" tabIndex={0}>
+              Cadastre-se
+            </Link>
           </p>
         </div>
       </main>
