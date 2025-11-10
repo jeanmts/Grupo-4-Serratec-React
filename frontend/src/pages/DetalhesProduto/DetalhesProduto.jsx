@@ -13,7 +13,7 @@ const DetalhesProduto = () => {
 
   useEffect(() => {
     api
-      .get(`/produtos/${id}`)
+      .get(`/products/${id}`)
       .then((response) => {
         setProduto(response.data);
         setCarregando(false);
@@ -28,7 +28,7 @@ const DetalhesProduto = () => {
     const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
     carrinho.push(produto);
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
-    alert(`${produto.nome} foi adicionado ao carrinho!`);
+    alert(`${produto.name} foi adicionado ao carrinho!`);
     navigate("/carrinho");
   }
 
@@ -41,15 +41,15 @@ const DetalhesProduto = () => {
       <main className={styles.container}>
         <div className={styles.produto}>
           <img
-            src={produto.imagemUrl}
-            alt={produto.nome}
+            src={produto.image}
+            alt={produto.name}
             className={styles.imagem}
           />
 
           <div className={styles.info}>
-            <h1>{produto.nome}</h1>
-            <p>{produto.descricao}</p>
-            <h2>R$ {produto.preco.toFixed(2)}</h2>
+            <h1>{produto.name}</h1>
+            <p>{produto.description}</p>
+            <h2>R$ {produto.price.toFixed(2)}</h2>
 
             <button onClick={adicionarAoCarrinho}>Adicionar ao carrinho</button>
           </div>
