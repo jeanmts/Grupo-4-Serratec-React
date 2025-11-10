@@ -56,7 +56,7 @@ const Login = () => {
               <label
                 htmlFor="exampleInputEmail1"
                 className="form-label"
-                aria-placeholder="Digite o seu email"
+                aria-placeholder="Digite o seu usuario!"
               >
                 Usuario
               </label>
@@ -69,7 +69,7 @@ const Login = () => {
                 className="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
-                placeholder="email@mailcom"
+                placeholder="Digite o seu usuario!"
                 required
               />
             </div>
