@@ -12,6 +12,8 @@ import Login from "./pages/Login/Login"; // Jean
 import Signup from "./pages/Signup/Signup"; // Jean
 import DetalhesProduto from "./pages/DetalhesProduto/DetalhesProduto"; // Pedro
 import NotFound from "./pages/NotFound/NotFound"; // Rota 404 eu
+import Carrinho from "./pages/Carrinho/Carrinho"; // Pedro
+import ProtectedRoutes from "./routes/ProtectedRoutes";
 
 const App = () => {
   return (
@@ -33,6 +35,10 @@ const App = () => {
       {/* ROTA 404*/}
       {/* NÃO usa o <Layout /> página independente */}
       <Route path="*" element={<NotFound />} />
+      {/* rotas protegidas */}
+      <Route element={<ProtectedRoutes redirectTo="/login" />}>
+        <Route path="/carrinho" element={<Carrinho />} />
+      </Route>
     </Routes>
   );
 };
