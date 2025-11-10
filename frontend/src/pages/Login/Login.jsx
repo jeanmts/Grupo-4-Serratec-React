@@ -48,8 +48,8 @@ const Login = () => {
       <header>
         <Header />
       </header>
-      <main id="main" className={styles.mainLogin} tabIndex={0}>
-        <div className={styles.containerMain}>
+      <main id="main" className={styles.mainLogin}>
+        <div className={styles.containerMain}  tabIndex={0}>
           <h1 className={styles.titleLogin}>Login</h1>
           <form onSubmit={handleSubmit(handleLogin)} aria-label="Formulário para login do usuario">
             <div className="mb-3" tabIndex={0}>

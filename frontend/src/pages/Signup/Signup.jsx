@@ -38,8 +38,8 @@ const Signup = () => {
       <header >
         <Header  />
       </header>
-      <main className={styles.mainSignup} tabIndex={0}>
-        <div className={styles.containerMain}>
+      <main className={styles.mainSignup} >
+        <div className={styles.containerMain} tabIndex={0}>
           <h1 className="title-login">Cadastrar</h1>
           <form onSubmit={handleSubmit(handleRegister)} tabIndex={0} aria-label="Formulário para cadastro de usuarios">
             <div className={styles.form}>
