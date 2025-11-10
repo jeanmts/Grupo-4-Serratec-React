@@ -1,1 +1,96 @@
-/*Arquivo css*/
+.container {
+  padding: 40px 20px;
+  min-height: 80vh;
+  background-color: #f9fafb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* titulo principal */
+.container h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* texto quando o carrinho está vazio */
+.container p {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+/* lista de produtos */
+.lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 800px;
+}
+
+/* cada item do carrinho */
+.item {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 16px;
+  transition: transform 0.2s ease;
+}
+
+.item:hover {
+  transform: scale(1.01);
+}
+
+/* imagem do produto */
+.item img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+/* informações do produto */
+.item h2 {
+  font-size: 1.2rem;
+  color: #222;
+  margin-bottom: 6px;
+  text-align: left;
+}
+
+.item p {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.item strong {
+  font-size: 1.1rem;
+  color: #4f46e5; 
+  text-align: left;
+}
+
+/* botão "Continuar comprando" */
+.container button {
+  background-color: #4f46e5;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 30px;
+  transition: background-color 0.3s ease;
+}
+
+.container button:hover {
+  background-color: #3f3a9a;
+}
