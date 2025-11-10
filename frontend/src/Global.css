@@ -14,3 +14,5 @@ p , a {
 a{
   margin-left: 5px;
 }
+
+*:focus { outline: 5px solid #5BA0FF }

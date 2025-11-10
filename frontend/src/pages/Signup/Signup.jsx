@@ -35,16 +35,17 @@ const Signup = () => {
 
   return (
     <>
-      <header>
-        <Header />
+      <header >
+        <Header  />
       </header>
-      <main className={styles.mainSignup}>
+      <main className={styles.mainSignup} tabIndex={0}>
         <div className={styles.containerMain}>
           <h1 className="title-login">Cadastrar</h1>
-          <form onSubmit={handleSubmit(handleRegister)}>
+          <form onSubmit={handleSubmit(handleRegister)} tabIndex={0} aria-label="Formulário para cadastro de usuarios">
             <div className={styles.form}>
-              <div className="mb-3">
+              <div className="mb-3" tabIndex={0}>
                 <label
+                tabIndex={0}
                   htmlFor="exampleInputEmail1"
                   className="form-label"
                   aria-placeholder="Digite um nome de usuario!"
@@ -52,6 +53,7 @@ const Signup = () => {
                   Usuario
                 </label>
                 <input
+                tabIndex={0}
                   {...register("username", {
                     required: "O usuario é obrigatorio!",
                   })}
@@ -64,6 +66,7 @@ const Signup = () => {
                 />
 
                 <label
+                tabIndex={0}
                   htmlFor="exampleInputEmail2"
                   className="form-label"
                   aria-placeholder="Digite o seu email"
@@ -71,6 +74,7 @@ const Signup = () => {
                   Email
                 </label>
                 <input
+                tabIndex={0}
                   {...register("email", {
                     required: "O email é obrigatorio!",
                   })}
@@ -83,8 +87,9 @@ const Signup = () => {
                 />
               </div>
 
-              <div className="mb-3">
+              <div className="mb-3" tabIndex={0}> 
                 <label
+                tabIndex={0}
                   htmlFor="exampleInputPassword3"
                   className="form-label"
                   aria-placeholder="Digite a sua senha"
@@ -92,6 +97,7 @@ const Signup = () => {
                   Senha
                 </label>
                 <input
+                tabIndex={0}
                   {...register("password", {
                     required: "O usuario é obrigatorio!",
                   })}
@@ -103,6 +109,7 @@ const Signup = () => {
                 />
 
                 <label
+                tabIndex={0}
                   htmlFor="exampleInputPassword4"
                   className="form-label"
                   aria-placeholder="Digite a sua senha"
@@ -110,6 +117,7 @@ const Signup = () => {
                   Confirmar Senha
                 </label>
                 <input
+                tabIndex={0}
                   {...register("confirmPassWord", {
                     required: "O usuario é obrigatorio!",
                   })}
@@ -123,9 +131,9 @@ const Signup = () => {
                   <span className={styles.spanErro}>{errorSignIn}</span>
                 ) : null}
               </div>
-              <Button texto="Cadastrar" />
-              <p>
-                Ja possui uma conta ?<Link to={"/login"}>Acesse</Link>
+              <Button texto="Cadastrar" tabIndex={0}/>
+              <p tabIndex={0}>
+                Ja possui uma conta ?<Link to={"/login"} tabIndex={0}>Acesse</Link>
               </p>
             </div>
           </form>
