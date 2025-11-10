@@ -27,7 +27,7 @@ const App = () => {
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} /> {/* 'Signup' aqui */}
-      <Route path="/detalhes/:id" element={<DetalhesProduto />} />{" "}
+      <Route path="/products/:id" element={<DetalhesProduto />} />{" "}
       {/* id parâmetro dinâmico */}
       {/* adicionar outras rotas que precisam do layout aqui, carrinho */}
       {/* <Route path="/carrinho" element={<Carrinho />} />*/}

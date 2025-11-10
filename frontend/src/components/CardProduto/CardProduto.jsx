@@ -1,25 +1,44 @@
-import React from 'react';
-import styles from './CardProduto.module.css';
+import React, { useEffect, useState } from "react";
+import styles from "./CardProduto.module.css";
+import api from "../../service/api";
+
 
 function CardProduto({ produto, onVerDetalhes }) {
-  
-  const { title, price, category, image, description } = produto;
+const [listaProduto, setListaProdutos] = useState({})
+
+  const detalhesProduto = async () => {
+    try {
+      const response = await api.get(`/products/${produto.id}`);
+
+      if (!response.data) {
+        const card = document.getElementById("containerCard");
+        card.append(<p>Nenhum produto encontrado.</p>);
+      }
+      setListaProdutos(response.data)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    detalhesProduto();
+  }, []);
+
+        
+
 
   return (
-    <div className={styles.cardProduto}> 
-      <img src={image} alt={title} className={styles.cardImagem} />
-      
+    <div id="containerCard" className={styles.cardProduto}>
+      <img src={listaProduto.image} alt={listaProduto.title} className={styles.cardImagem} />
+
       <div className={styles.cardConteudo}>
-        <span className={styles.cardCategoria}>{category}</span>
-        <h3 className={styles.cardNome}>{title}</h3>
-        
+        <span className={styles.cardCategoria}>{listaProduto.category}</span>
+        <h3 className={styles.cardNome}>{listaProduto.title}</h3>
+
         <p className={styles.cardDescricao}>
-          {description.substring(0, 70)}...
+          {listaProduto.description}...
         </p>
-        <p className={styles.cardPreco}>R$ {price}</p>
-        <button 
-          onClick={onVerDetalhes} 
-          className={styles.btnDetalhes}>
+        <p className={styles.cardPreco}>R$ {listaProduto.price}</p>
+        <button onClick={onVerDetalhes} className={styles.btnDetalhes}>
           Ver Detalhes
         </button>
       </div>

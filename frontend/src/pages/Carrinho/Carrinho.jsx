@@ -39,11 +39,11 @@ const Carrinho = () => {
         <ul className={styles.lista}>
           {carrinho.map((item, index) => (
             <li key={index} className={styles.item}>
-              <img src={item.imagemUrl} alt={item.nome} />
+              <img src={item.image} alt={item.name} />
               <div>
-                <h2>{item.nome}</h2>
-                <p>{item.descricao}</p>
-                <strong>R$ {item.preco.toFixed(2)}</strong>
+                <h2>{item.name}</h2>
+                <p>{item.description}</p>
+                <strong>R$ {item.price.toFixed(2)}</strong>
               </div>
             </li>
           ))}

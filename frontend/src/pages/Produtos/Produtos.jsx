@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import CardProduto from '../../components/CardProduto/CardProduto';
 import FiltroProdutos from '../../components/FiltroProdutos/FiltroProdutos';
-import * as styles from './Produtos.module.css';
-import api from '../../services/api';
+import * as styles from './Produto.module.css';
+import api from '../../service/api';
 
 
 const Produtos = () => {
   
   // armazena a lista completa de produtos vinda da api começando vazia
-  const [todosProdutos, setTodosProdutos] = useState([]);
+  const [todosProdutos, setTodosProdutos] = useState([{}]);
   
   // guarda o texto que o usuário digita na pesquisa e omeça vazio
   const [filtro, setFiltro] = useState('');
@@ -33,6 +32,7 @@ const Produtos = () => {
         const response = await api.get('/products');
         // se funcionar salva os dados no estado todosProdutos
         setTodosProdutos(response.data);
+        console.log(response.data)
         setErro(null);
       } catch (err) {
         // e der errado algo na api, salva uma mensagem de erro 
@@ -48,10 +48,12 @@ const Produtos = () => {
     fetchProdutos();
   }, []);
 
-  const produtosFiltrados = todosProdutos.filter(produto =>
-    produto.title.toLowerCase().includes(filtro.toLowerCase()) ||
-    produto.category.toLowerCase().includes(filtro.toLowerCase())
-  );
+  const produtosFiltrados = todosProdutos.filter(produto => {
+  const title = produto.title ? produto.title.toLowerCase() : '';
+  const category = produto.category ? produto.category.toLowerCase() : '';
+  return title.includes(filtro.toLowerCase()) || category.includes(filtro.toLowerCase());
+});
+
 
   return (
     <> 
@@ -62,7 +64,7 @@ const Produtos = () => {
         </h1>
         {todosProdutos.map((produto) => {
           return (
-            <CardProduto produto={produto} onVerDetalhes={onVerDetalhes}/>
+            <CardProduto key={produto.id} produto={produto} onVerDetalhes={() => navigate(`/products/${produto.id}`)}/>
           )
         } )}
         <FiltroProdutos filtro={filtro} onFiltroChange={setFiltro} />
@@ -80,7 +82,7 @@ const Produtos = () => {
             ))}
           </div>
         )}
-        {/* aqui exibe a mensagem caso o total de produtos seja 0 */}
+        {/* {/* aqui exibe a mensagem caso o total de produtos seja 0 */}
         {!loading && !erro && produtosFiltrados.length === 0 && (
           <p>Nenhum produto encontrado.</p> // Mostra esta mensagem.
         )}
