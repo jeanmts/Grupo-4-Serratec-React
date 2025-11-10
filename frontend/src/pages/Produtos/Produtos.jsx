@@ -5,7 +5,7 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import CardProduto from '../../components/CardProduto/CardProduto';
 import FiltroProdutos from '../../components/FiltroProdutos/FiltroProdutos';
-import styles from './Produtos.module.css';
+import * as styles from './Produtos.module.css';
 import api from '../../services/api';
 
 
@@ -76,7 +76,7 @@ const Produtos = () => {
               <CardProduto 
                 key={produto.id}
                 produto={produto}
-                onVerDetalhes={() => navigate(`/produto/${produto.id}`)}/>
+                onVerDetalhes={() => navigate(`/DetalhesProduto/${produto.id}`)}/>
             ))}
           </div>
         )}
