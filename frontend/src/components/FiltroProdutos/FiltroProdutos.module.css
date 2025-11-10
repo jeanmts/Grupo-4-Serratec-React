@@ -1,0 +1,11 @@
+.filtroContainer {
+  margin-bottom: 24px;
+}
+
+.filtroInput {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
