@@ -37,7 +37,7 @@ const DetalhesProduto = () => {
 
   return (
     <div>
-      <Header />
+      <Header op1= "Login" op2= "Cadastrar" op3= "Produtos"/>
       <main className={styles.container}>
         <div className={styles.produto}>
           <img

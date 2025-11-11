@@ -36,7 +36,7 @@ const Signup = () => {
   return (
     <>
       <header >
-        <Header  />
+       <Header op1= "Login" op3= "Produtos"/>
       </header>
       <main className={styles.mainSignup} >
         <div className={styles.containerMain} tabIndex={0}>
