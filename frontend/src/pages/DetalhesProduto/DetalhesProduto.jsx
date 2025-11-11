@@ -28,7 +28,7 @@ const DetalhesProduto = () => {
     const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
     carrinho.push(produto);
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
-    alert(`${produto.name} foi adicionado ao carrinho!`);
+    alert(`${produto.title} foi adicionado ao carrinho!`);
     navigate("/carrinho");
   }
 
