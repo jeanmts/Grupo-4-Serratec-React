@@ -46,7 +46,7 @@ const Login = () => {
   return (
     <>
       <header>
-        <Header />
+        <Header op1={"Produtos"} op2={"Carrinho"}/>
       </header>
       <main id="main" className={styles.mainLogin}>
         <div className={styles.containerMain}  tabIndex={0}>
