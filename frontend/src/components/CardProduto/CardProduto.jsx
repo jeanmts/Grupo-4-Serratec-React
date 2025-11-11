@@ -24,17 +24,17 @@ const [listaProduto, setListaProdutos] = useState({})
   }, []);
 
   return (
-    <div id="containerCard" className={styles.cardProduto}>
+    <div id="containerCard" className={styles.cardProduto} tabIndex={0}>
       <img src={listaProduto.image} alt={listaProduto.title} className={styles.cardImagem} />
 
       <div className={styles.cardConteudo}>
-        <span className={styles.cardCategoria}>{listaProduto.category}</span>
-        <h3 className={styles.cardNome}>{listaProduto.title}</h3>
+        <span className={styles.cardCategoria} tabIndex={0} >{listaProduto.category}</span>
+        <h3 className={styles.cardNome} tabIndex={0} >{listaProduto.title}</h3>
 
-        <p className={styles.cardDescricao}>
+        <p className={styles.cardDescricao} tabIndex={0}>
           {listaProduto.description}...
         </p>
-        <p className={styles.cardPreco}>R$ {listaProduto.price}</p>
+        <p className={styles.cardPreco} tabIndex={0} >R$ {listaProduto.price}</p>
         <button onClick={onVerDetalhes} className={styles.btnDetalhes}>
           Ver Detalhes
         </button>
