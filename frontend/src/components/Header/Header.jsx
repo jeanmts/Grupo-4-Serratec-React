@@ -8,11 +8,11 @@ import './Header.css';
  * @param {string} [props.mainCodocker compose up --buildlor='#4F46E5'] 
  * @param {number} [props.cartItemCount=0] 
  */
-const Header = ({ mainColor = '#4F46E5', cartItemCount = 0 }) => {
+const Header = ({op1, op2, op3}) => {
 
   
-  const logoStyle = { color: mainColor };
-  const buttonStyle = { backgroundColor: mainColor };
+  //const logoStyle = { color: mainColor };
+ // const buttonStyle = { backgroundColor: mainColor };
 
   return (
     <header className="header-container">
@@ -22,27 +22,26 @@ const Header = ({ mainColor = '#4F46E5', cartItemCount = 0 }) => {
         <Link 
           to="/produtos" 
           className="header-logo" 
-          style={logoStyle} 
+          
         >
           ShopSerra
         </Link>
 
         {}
         <nav className="nav-links">
-          <Link to="/produtos" className="nav-link">
-            Produtos
+          <Link to={`/${op1}`} className="nav-link">
+            {op1}
           </Link>
-          <Link to="/login" className="nav-link">
-            Login
+          <Link to={`/${op2}`} className="nav-link">
+            {op2}
           </Link>
           
           {}
-          <Link 
-            to="/signup" 
+          <Link to={`/${op3}`}
             className="signup-button"
-            style={buttonStyle} 
+           
           >
-            Cadastro
+            {op3}
           </Link>
         </nav>
 
@@ -51,11 +50,11 @@ const Header = ({ mainColor = '#4F46E5', cartItemCount = 0 }) => {
             <Link to="/carrinho" className="cart-icon">
               <span className="cart-emoji">🛒</span>
               {}
-              {cartItemCount > 0 && (
+              {/* {cartItemCount > 0 && (
                 <span className="cart-counter">
                   {cartItemCount}
                 </span> 
-              )}
+              )} */}
             </Link>
 
             {}

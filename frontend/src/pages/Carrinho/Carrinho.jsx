@@ -20,7 +20,7 @@ const Carrinho = () => {
   if (carrinho.length === 0) {
     return (
       <div>
-        <Header />
+        <Header op1= "Login" op2= "Cadastrar" op3= "Produtos"/>
         <main className={styles.container}>
           <h1>Seu carrinho está vazio 🛍️</h1>
           <p>Que tal dar uma olhada nos nossos produtos?</p>
@@ -33,7 +33,7 @@ const Carrinho = () => {
 
   return (
     <div>
-      <Header />
+      <Header op1= "Login" op2= "Cadastrar" op3= "Produtos"/>
       <main className={styles.container}>
         <h1>Seu Carrinho</h1>
         <ul className={styles.lista}>

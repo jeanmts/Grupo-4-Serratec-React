@@ -57,7 +57,7 @@ const Produtos = () => {
 
   return (
     <> 
-      <Header /> 
+      <Header op1= "Login" op3= "Cadastro"/>
       <section className={styles.produtosPagina}>
         <h1 className="text-3xl font-poppins font-bold" style={{ color: '#4F46E5' }}>
           Nossos Produtos
