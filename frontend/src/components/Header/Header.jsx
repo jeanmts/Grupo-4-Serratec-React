@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+
 import './Header.css'; 
 
 /**
@@ -9,10 +11,28 @@ import './Header.css';
  * @param {number} [props.cartItemCount=0] 
  */
 const Header = ({op1, op2, op3}) => {
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   
   //const logoStyle = { color: mainColor };
  // const buttonStyle = { backgroundColor: mainColor };
+
+  if (token) {
+    op1 = "Produtos";
+    op2 = "Carrinho";
+    op3 = "Sair";
+  }
+
+  const logout = () => {
+    if (op3 == "Sair") {
+      if (token) {
+        localStorage.clear();
+        navigate("/login");
+      }
+    }
+    return;
+  };
 
   return (
     <header className="header-container">
@@ -36,13 +56,20 @@ const Header = ({op1, op2, op3}) => {
             {op2}
           </Link>
           
-          {}
-          <Link to={`/${op3}`}
-            className="signup-button"
-           
-          >
-            {op3}
-          </Link>
+          {} {op3 != "Sair" ? (
+            <Link to={`/${op3}`} className="signup-button">
+              {op3}
+            </Link>
+          ) : (
+            <button
+              onClick={() => {
+                logout();
+              }}
+              className="signup-button"
+            >
+              Sair
+            </button>
+          )}
         </nav>
 
         {}

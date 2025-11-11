@@ -100,7 +100,7 @@ const Login = () => {
           ) : null}
           <p tabIndex={0}>
             Não tem uma conta
-            <Link to="/signup" tabIndex={0}>
+            <Link to="/cadastro" tabIndex={0}>
               Cadastre-se
             </Link>
           </p>

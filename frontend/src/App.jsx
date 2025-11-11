@@ -4,8 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // Estruturais
 // import Layout from './components/Layout/Layout'; // O componente que tem Header e Footer
 
-// de Página 
-
+// de Página
 
 import Produtos from "./pages/Produtos/Produtos"; // Isa
 import Login from "./pages/Login/Login"; // Jean
@@ -21,24 +20,27 @@ const App = () => {
       {/* ROTA PAI*/}
       {/* <Route path="/" element={<Layout />}> */}
       {/* Index */}
-      <Route path="/" element={<Produtos />}>
-        {/* secundárias*/}
-        <Route path="/produtos" element={<Produtos />} />
-      </Route>
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} /> {/* 'Signup' aqui */}
-      <Route path="/products/:id" element={<DetalhesProduto />} />{" "}
-      {/* id parâmetro dinâmico */}
-      {/* adicionar outras rotas que precisam do layout aqui, carrinho */}
-      {/* <Route path="/carrinho" element={<Carrinho />} />*/}
-      {/* </Route> */}
-      {/* ROTA 404*/}
-      {/* NÃO usa o <Layout /> página independente */}
-      <Route path="*" element={<NotFound />} />
-      {/* rotas protegidas */}
-      <Route element={<ProtectedRoutes redirectTo="/login" />}>
+        {/* ROTA PAI*/}
+        {/* <Route path="/" element={<Layout />}> */}
+        {/* Index */}
+        <Route path="/" element={<Produtos />}>
+          {/* secundárias*/}
+          <Route path="/produtos" element={<Produtos />} />
+        </Route>
+        <Route path="/login" element={<Login />} />
+        <Route path="/cadastro" element={<Signup />} /> {/* 'Signup' aqui */}
+        <Route path="/products/:id" element={<DetalhesProduto />} />
+        {/* id parâmetro dinâmico */}
+        {/* adicionar outras rotas que precisam do layout aqui, carrinho */}
+        {/* <Route path="/carrinho" element={<Carrinho />} />*/}
+        {/* </Route> */}
+        {/* ROTA 404*/}
+        {/* NÃO usa o <Layout /> página independente */}
+        <Route path="*" element={<NotFound />} />
+        {/* rotas protegidas */}
+        {/* <Route element={<ProtectedRoutes redirectTo='/login' />}> */}
         <Route path="/carrinho" element={<Carrinho />} />
-      </Route>
+        {/* </Route> */}
     </Routes>
   );
 };
