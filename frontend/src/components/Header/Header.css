@@ -1,9 +1,9 @@
-
 :root {
     --text-color: #4B5563; 
     --hover-color: #4338CA; 
     --red-color: #DC2626; 
     --shadow-color: rgba(0, 0, 0, 0.1);
+    --button-primary: #28218f
 }
 
 
@@ -71,13 +71,12 @@
     transition: background-color 0.3s;
     text-decoration: none;
     box-shadow: 0 4px 6px -1px var(--shadow-color);
+    background-color: var(--button-primary)
 }
 .signup-button:hover {
-    
+    color: #000;
     background-color: var(--hover-color) !important; 
 }
-
-
 
 .cart-container {
     display: flex;
