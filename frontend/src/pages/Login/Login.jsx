@@ -4,14 +4,16 @@ import Signup from "../Signup/Signup";
 import Button from "../../components/Button/Button";
 import { useForm } from "react-hook-form";
 import api from "../../service/api";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "../../Global.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import { UserContext } from "../../context/UserContext";
 
 const Login = () => {
   const navigate = useNavigate();
   const [errorSignIn, setErrorSignIn] = useState("");
+  const {userName, setUserName}= useContext(UserContext);
 
   const {
     register,
@@ -34,7 +36,7 @@ const Login = () => {
       const response = await api.post("/auth/login", { ...dados });
 
       const { token } = response.data;
-
+      setUserName(dados.username);
       localStorage.setItem("token", token);
       navigate("/produtos");
     } catch (error) {

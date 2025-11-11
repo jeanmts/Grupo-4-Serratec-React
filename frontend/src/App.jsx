@@ -13,13 +13,15 @@ import DetalhesProduto from "./pages/DetalhesProduto/DetalhesProduto"; // Pedro
 import NotFound from "./pages/NotFound/NotFound"; // Rota 404 eu
 import Carrinho from "./pages/Carrinho/Carrinho"; // Pedro
 import ProtectedRoutes from "./routes/ProtectedRoutes";
+import UserProvider from "./context/UserContext";
 
 const App = () => {
   return (
-    <Routes>
-      {/* ROTA PAI*/}
-      {/* <Route path="/" element={<Layout />}> */}
-      {/* Index */}
+    <UserProvider>
+      <Routes>
+        {/* ROTA PAI*/}
+        {/* <Route path="/" element={<Layout />}> */}
+        {/* Index */}
         {/* ROTA PAI*/}
         {/* <Route path="/" element={<Layout />}> */}
         {/* Index */}
@@ -41,7 +43,8 @@ const App = () => {
         {/* <Route element={<ProtectedRoutes redirectTo='/login' />}> */}
         <Route path="/carrinho" element={<Carrinho />} />
         {/* </Route> */}
-    </Routes>
+      </Routes>
+    </UserProvider>
   );
 };
 
