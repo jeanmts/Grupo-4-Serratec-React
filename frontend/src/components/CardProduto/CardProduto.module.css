@@ -1,63 +1,94 @@
 .cardProduto {
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  width: 260px;
   display: flex;
   flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.cardProduto:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .cardImagem {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
+  height: 200px;
+  object-fit: contain;
+  background-color: #f9f9f9;
+  padding: 12px;
 }
 
 .cardConteudo {
   padding: 16px;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  justify-content: space-between;
+  flex: 1;
 }
 
 .cardCategoria {
-  font-size: 0.75rem;
-  color: #666;
+  font-size: 0.8rem;
+  color: #777;
   text-transform: uppercase;
   margin-bottom: 8px;
+  font-weight: 600;
 }
 
 .cardNome {
-  font-size: 1.1rem;
+  font-size: 1rem;
+  color: #222;
+  margin-bottom: 10px;
   font-weight: 600;
-  margin-bottom: 8px;
+  line-height: 1.3;
 }
 
 .cardDescricao {
-  font-size: 0.9rem;
-  color: #444;
-  flex-grow: 1;
-  margin-bottom: 16px;
+  font-size: 0.85rem;
+  color: #555;
+  flex: 1;
+  margin-bottom: 12px;
+  line-height: 1.4;
 }
 
 .cardPreco {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 16px;
+  font-size: 1.2rem;
+  color: #222;
+  font-weight: bold;
+  margin-bottom: 12px;
 }
 
 .btnDetalhes {
-  background-color: #4F46E5;
+  background: linear-gradient(135deg, #4338CA, #4338Ca);
   color: white;
-  padding: 10px 16px;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  border-radius: 8px;
+  padding: 10px;
   font-weight: 600;
-  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .btnDetalhes:hover {
-  background-color: #4338CA;
+  background: linear-gradient(135deg, #28218f, #28218f);
+}
+
+@media (max-width: 768px) {
+  .cardProduto {
+    width: 100%;
+    max-width: 320px;
+    margin: auto;
+  }
+}
+
+.containerCards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
 }

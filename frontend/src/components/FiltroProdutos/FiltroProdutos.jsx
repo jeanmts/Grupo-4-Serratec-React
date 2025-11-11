@@ -8,7 +8,7 @@ function FiltroProdutos({ filtro, onFiltroChange }) {
       <input
         type="text"
         className={styles.filtroInput}
-        placeholder="Filtrar por nome ou categoria..."
+        placeholder="Filtrar por nome..."
         value={filtro} 
         onChange={(e) => onFiltroChange(e.target.value)}/>
     </div>

@@ -23,9 +23,6 @@ const [listaProduto, setListaProdutos] = useState({})
     detalhesProduto();
   }, []);
 
-        
-
-
   return (
     <div id="containerCard" className={styles.cardProduto}>
       <img src={listaProduto.image} alt={listaProduto.title} className={styles.cardImagem} />
