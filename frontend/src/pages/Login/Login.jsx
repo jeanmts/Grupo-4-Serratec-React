@@ -34,12 +34,10 @@ const Login = () => {
         return;
       }
       const response = await api.post("/auth/login", { ...dados });
-      console.log(response.data.token);
       if (response?.data) {
         const { token } = response.data;
         setUserName(dados.username);
         localStorage.setItem("username", dados.userName);
-        console.log(localStorage.getItem("username"));
         localStorage.setItem("token", token);
 
         const { data } = await api.get("/users");
