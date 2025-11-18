@@ -15,6 +15,7 @@ const Login = () => {
 
   const navigate = useNavigate();
   const [errorSignIn, setErrorSignIn] = useState("");
+  const {userName, setUserName}= useContext(UserContext);
 
   const {
     register,
