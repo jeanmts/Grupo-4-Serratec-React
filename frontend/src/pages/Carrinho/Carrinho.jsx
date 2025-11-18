@@ -18,7 +18,7 @@ const Carrinho = () => {
         const cart = await api.get("/carts");
 
         const id = localStorage.getItem("id");
-        console.log("Cart aqui: ",cart);
+        console.log("Cart aqui: ", cart);
         const carrinhoUsuario = cart.data.filter((cart) => cart.userId == id);
 
         setCarrinhoCont(carrinhoUsuario);
@@ -30,48 +30,46 @@ const Carrinho = () => {
   }, []);
 
   const salvarCarrinho = async () => {
-      console.log("CarrinhoCount aqui:", carrinhoCont);
-      console.log("Carrinho normal aqui: ",carrinho)
-      try {
-        const token = localStorage.getItem("token");
-        if (!token) {
-          return;
-        }
-
-        const id = localStorage.getItem("id");
-
-        if (!id) {
-          console.log("Usuario nao encontrado ");
-        }
-        const carrinho = JSON.parse(localStorage.getItem("carrinho"))
-        setCarrinhoCont(carrinho)
-        const products = carrinhoCont;
-
-        console.log("CarrinhoCont aqui: ", carrinhoCont)
-        const post = {
-          userId: id,
-          products,
-        };
-        const response = await api.post(
-          "/carts",
-          { ...post },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        console.log(response);
-      } catch (error) {
-        console.log(error);
+    console.log("CarrinhoCount aqui:", carrinhoCont);
+    console.log("Carrinho normal aqui: ", carrinho);
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        return;
       }
-    };
-  
+
+      const id = localStorage.getItem("id");
+
+      if (!id) {
+        console.log("Usuario nao encontrado ");
+      }
+      const carrinho = JSON.parse(localStorage.getItem("carrinho"));
+      setCarrinhoCont(carrinho);
+      const products = carrinhoCont;
+
+      console.log("CarrinhoCont aqui: ", carrinhoCont);
+      const post = {
+        userId: id,
+        products,
+      };
+      const response = await api.post(
+        "/carts",
+        { ...post },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   function continuarComprando() {
     navigate("/produtos");
   }
-
 
   if (carrinhoCont?.length === 0) {
     return (
@@ -101,9 +99,24 @@ const Carrinho = () => {
                 <p>{item.description}</p>
                 <strong>R$ {item.price}</strong>
               </div>
+
+              {/* botão de remover */}
+              <button
+                className={styles.btnRemover}
+                onClick={() => removerItem(index)}
+              >
+                Remover
+              </button>
             </li>
           ))}
         </ul>
+
+        {/* total das compras */}
+        <div className={styles.totalContainer}>
+          <h2>Total:</h2>
+          <p className={styles.totalValor}>R$ {total.toFixed(2)}</p>
+        </div>
+
         <button onClick={continuarComprando}>Continuar comprando</button>
         <button onClick={salvarCarrinho}>Salvar Carrinho</button>
       </main>

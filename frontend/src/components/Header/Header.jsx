@@ -15,7 +15,7 @@ const Header = ({ op1, op2, op3 }) => {
   //const logoStyle = { color: mainColor };
   // const buttonStyle = { backgroundColor: mainColor };
 
- if (token) {
+  if (token) {
     op1 = "Produtos";
     op2 = "Carrinho";
     op3 = "Sair";
