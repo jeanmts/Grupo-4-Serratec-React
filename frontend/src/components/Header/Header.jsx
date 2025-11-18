@@ -50,7 +50,7 @@ const Header = ({ op1, op2, op3 }) => {
 
           {}
           {op3 != "Sair" ? (
-            <Link to={'/${op3}'} className="signup-button">
+            <Link to={`/${op3}`} className="signup-button">
               {op3}
             </Link>
           ) : (
