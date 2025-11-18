@@ -11,10 +11,9 @@ import Footer from "../../components/Footer/Footer";
 import { UserContext } from "../../context/UserContext";
 
 const Login = () => {
-  const { setUserName } = useContext(UserContext);
-
   const navigate = useNavigate();
   const [errorSignIn, setErrorSignIn] = useState("");
+  const { userName, setUserName } = useContext(UserContext);
 
   const {
     register,
@@ -38,17 +37,19 @@ const Login = () => {
       console.log(response.data.token);
       if (response?.data) {
         const { token } = response.data;
-        setUserName(dados.username)
+        setUserName(dados.username);
         localStorage.setItem("username", dados.userName);
-        console.log(localStorage.getItem("username"))
+        console.log(localStorage.getItem("username"));
         localStorage.setItem("token", token);
 
         const { data } = await api.get("/users");
-          console.log("Dado, ", data)
-        const userFiltrado = data.filter((user) => dados.username == user.username);
-        console.log("UserFiltrado Login: ", userFiltrado)
-        localStorage.setItem("id",userFiltrado[0].id)
-        
+        console.log("Dado, ", data);
+        const userFiltrado = data.filter(
+          (user) => dados.username == user.username
+        );
+        console.log("UserFiltrado Login: ", userFiltrado);
+        localStorage.setItem("id", userFiltrado[0].id);
+
         navigate("/produtos");
       } else {
         console.log("Nenhum dado retornado da API");

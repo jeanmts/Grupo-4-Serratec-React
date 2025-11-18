@@ -31,6 +31,12 @@ const Header = ({ op1, op2, op3 }) => {
     return;
   };
 
+  if (token) {
+    op1 = "Produtos";
+    op2 = "Carrinho";
+    op3 = "Sair";
+  }
+
   return (
     <header className="header-container">
       <div className="header-content">
