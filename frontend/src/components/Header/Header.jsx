@@ -15,7 +15,7 @@ const Header = ({ op1, op2, op3 }) => {
   //const logoStyle = { color: mainColor };
   // const buttonStyle = { backgroundColor: mainColor };
 
- if (token) {
+  if (token) {
     op1 = "Produtos";
     op2 = "Carrinho";
     op3 = "Sair";
@@ -37,16 +37,6 @@ const Header = ({ op1, op2, op3 }) => {
     op3 = "Sair";
   }
 
-  const logout = () => {
-    if (op3 == "Sair") {
-      if (token) {
-        localStorage.clear();
-        navigate("/login");
-      }
-    }
-    return;
-  };
-
   return (
     <header className="header-container">
       <div className="header-content">
@@ -57,10 +47,10 @@ const Header = ({ op1, op2, op3 }) => {
 
         {}
         <nav className="nav-links">
-          <Link to={'/${op1}'} className="nav-link">
+          <Link to={`/${op1}`} className="nav-link">
             {op1}
           </Link>
-          <Link to={'/${op2}'} className="nav-link">
+          <Link to={`/${op2}`} className="nav-link">
             {op2}
           </Link>
 
