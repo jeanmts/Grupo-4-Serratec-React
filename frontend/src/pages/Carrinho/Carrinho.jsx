@@ -2,78 +2,40 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import * as styles from "./Carrinho.module.css";
 import { useNavigate } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
-import api from "../../service/api";
-import { UserContext } from "../../context/UserContext";
-import { CartContext } from "../../context/CartContext";
-const Carrinho = () => {
-  const { userName } = useContext(UserContext);
-  const { carrinhoCont, setCarrinhoCont } = useContext(CartContext);
+import { useEffect, useState } from "react";
 
+const Carrinho = () => {
   const navigate = useNavigate();
+  const [carrinho, setCarrinho] = useState([]);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    const buscarCarrinho = async () => {
-      try {
-        const cart = await api.get("/carts");
-
-        const id = localStorage.getItem("id");
-        console.log("Cart aqui: ", cart);
-        const carrinhoUsuario = cart.data.filter((cart) => cart.userId == id);
-
-        setCarrinhoCont(carrinhoUsuario);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    buscarCarrinho();
+    const itens = JSON.parse(localStorage.getItem("carrinho")) || [];
+    setCarrinho(itens);
+    calcularTotal(itens);
   }, []);
 
-  const salvarCarrinho = async () => {
-    console.log("CarrinhoCount aqui:", carrinhoCont);
-    console.log("Carrinho normal aqui: ", carrinho);
-    try {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        return;
-      }
+  //  recalcular o total
+  function calcularTotal(itens) {
+    const soma = itens.reduce((acc, item) => acc + (item.price || 0), 0);
+    setTotal(soma);
+  }
 
-      const id = localStorage.getItem("id");
-
-      if (!id) {
-        console.log("Usuario nao encontrado ");
-      }
-      const carrinho = JSON.parse(localStorage.getItem("carrinho"));
-      setCarrinhoCont(carrinho);
-      const products = carrinhoCont;
-
-      console.log("CarrinhoCont aqui: ", carrinhoCont);
-      const post = {
-        userId: id,
-        products,
-      };
-      const response = await api.post(
-        "/carts",
-        { ...post },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //  remover produto do carrinho
+  function removerItem(index) {
+    const novoCarrinho = carrinho.filter((_, i) => i !== index);
+    setCarrinho(novoCarrinho);
+    localStorage.setItem("carrinho", JSON.stringify(novoCarrinho));
+    calcularTotal(novoCarrinho);
+  }
 
   function continuarComprando() {
     navigate("/produtos");
   }
 
-  if (carrinhoCont?.length === 0) {
+  if (carrinho.length === 0) {
     return (
-      <div className={styles.carrinhoVazio}>
+      <div>
         <Header op1="Login" op2="Cadastrar" op3="Produtos" />
         <main className={styles.container}>
           <h1>Seu carrinho está vazio 🛍️</h1>
@@ -91,13 +53,13 @@ const Carrinho = () => {
       <main className={styles.container}>
         <h1>Seu Carrinho</h1>
         <ul className={styles.lista}>
-          {carrinhoCont.map((item, index) => (
+          {carrinho.map((item, index) => (
             <li key={index} className={styles.item}>
               <img src={item.image} alt={item.name} />
               <div>
                 <h2>{item.name}</h2>
                 <p>{item.description}</p>
-                <strong>R$ {item.price}</strong>
+                <strong>R$ {item.price.toFixed(2)}</strong>
               </div>
 
               {/* botão de remover */}
@@ -118,7 +80,6 @@ const Carrinho = () => {
         </div>
 
         <button onClick={continuarComprando}>Continuar comprando</button>
-        <button onClick={salvarCarrinho}>Salvar Carrinho</button>
       </main>
       <Footer />
     </div>
