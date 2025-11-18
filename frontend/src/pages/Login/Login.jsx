@@ -43,11 +43,10 @@ const Login = () => {
         localStorage.setItem("token", token);
 
         const { data } = await api.get("/users");
-        console.log("Dado, ", data);
         const userFiltrado = data.filter(
           (user) => dados.username == user.username
         );
-        console.log("UserFiltrado Login: ", userFiltrado);
+
         localStorage.setItem("id", userFiltrado[0].id);
 
         navigate("/produtos");
