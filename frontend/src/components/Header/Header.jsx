@@ -41,10 +41,10 @@ const Header = ({ op1, op2, op3 }) => {
 
         {}
         <nav className="nav-links">
-          <Link to={`/${op1}`} className="nav-link">
+          <Link to={'/${op1}'} className="nav-link">
             {op1}
           </Link>
-          <Link to={`/${op2}`} className="nav-link">
+          <Link to={'/${op2}'} className="nav-link">
             {op2}
           </Link>
 
