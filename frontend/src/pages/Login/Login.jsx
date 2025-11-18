@@ -11,6 +11,8 @@ import Footer from "../../components/Footer/Footer";
 import { UserContext } from "../../context/UserContext";
 
 const Login = () => {
+  const { setUserName } = useContext(UserContext);
+
   const navigate = useNavigate();
   const [errorSignIn, setErrorSignIn] = useState("");
   const {userName, setUserName}= useContext(UserContext);
@@ -34,26 +36,41 @@ const Login = () => {
         return;
       }
       const response = await api.post("/auth/login", { ...dados });
+      console.log(response.data.token);
+      if (response?.data) {
+        const { token } = response.data;
+        setUserName(dados.username)
+        localStorage.setItem("username", dados.userName);
+        console.log(localStorage.getItem("username"))
+        localStorage.setItem("token", token);
 
-      const { token } = response.data;
-      setUserName(dados.username);
-      localStorage.setItem("token", token);
-      navigate("/produtos");
+        const { data } = await api.get("/users");
+          console.log("Dado, ", data)
+        const userFiltrado = data.filter((user) => dados.username == user.username);
+        console.log("UserFiltrado Login: ", userFiltrado)
+        localStorage.setItem("id",userFiltrado[0].id)
+        
+        navigate("/produtos");
+      } else {
+        console.log("Nenhum dado retornado da API");
+      }
     } catch (error) {
-      console.log(error.response.data);
-      setErrorSignIn("Erro: " + error.response.data);
+      setErrorSignIn("Erro: " + error);
     }
   };
 
   return (
     <>
       <header>
-        <Header op1={"Produtos"} op2={"Carrinho"}/>
+        <Header op1={"Produtos"} op2={"Carrinho"} op3={"Cadastro"} />
       </header>
       <main id="main" className={styles.mainLogin}>
-        <div className={styles.containerMain}  tabIndex={0}>
+        <div className={styles.containerMain} tabIndex={0}>
           <h1 className={styles.titleLogin}>Login</h1>
-          <form onSubmit={handleSubmit(handleLogin)} aria-label="Formulário para login do usuario">
+          <form
+            onSubmit={handleSubmit(handleLogin)}
+            aria-label="Formulário para login do usuario"
+          >
             <div className="mb-3" tabIndex={0}>
               <label
                 htmlFor="exampleInputEmail1"

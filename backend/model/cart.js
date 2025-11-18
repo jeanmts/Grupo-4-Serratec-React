@@ -19,15 +19,12 @@ const cartSchema = new schema({
     },
    products:[
         {
-            productId:{
+            id:{
                 type:schema.Types.Number,
                 ref:Product,
                 required:true
             },
-            quantity:{
-                type:Number,
-                required:true
-            }
+
         }
    ]
 })
